@@ -6,8 +6,12 @@ namespace BookingHospital.Repositories.Data;
 public class HospitalContext : DbContext
 {
     public virtual DbSet<Account> Accounts { get; set; }
+    public virtual DbSet<Department> Departments { get; set; }
+    public virtual DbSet<Doctor> Doctors { get; set; }
+    public virtual DbSet<Patient> Patients { get; set; }
+    public virtual DbSet<Appointment> Appointments { get; set; }
 
-    protected HospitalContext()
+    public HospitalContext()
     {
     }
 
@@ -17,7 +21,6 @@ public class HospitalContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-
-        optionsBuilder.UseNpgsql("postgresql://postgres.ygwgsdnqameioghmocfe:booking_hospital123@@aws-1-ap-northeast-2.pooler.supabase.com:5432/postgres");
+        optionsBuilder.UseNpgsql("Host=aws-1-ap-northeast-2.pooler.supabase.com;Port=5432;Database=postgres;Username=postgres.ygwgsdnqameioghmocfe;Password=booking_hospital123@;");
     }
 }
